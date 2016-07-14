@@ -1,0 +1,221 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'HelveticaNeueW01-45Ligh', Helvetica, Arial, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    background-color: #111;
+    background-image: url('../img/background.jpg');
+    background-size: 100%;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+
+}
+
+#header {
+    width: 100%;
+    background: #36393D;
+    z-index: 100;
+    height: 20px;
+    position: fixed;
+}
+
+#footer {
+    background: #36393D;
+    bottom: 0;
+    height: 20px;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+#page h2 {
+    margin-bottom: 20px;
+    /*background: url(../../img/80-white_01.png) repeat;*/
+    font-size: 20px;
+}
+
+#page h3 {padding-bottom: 10px;}
+
+#page {
+    margin: 0 auto;
+    overflow: auto;
+    width: 1000px;
+    /*padding: 220px 0 20px 0;*/
+    padding: 50px 0 20px 0;
+}
+
+#logo {
+    height: 139px;
+    /*position: fixed;*/
+    /*top: 60px;*/
+    width: 124px;
+    z-index: 100;
+    cursor: pointer;
+    float: none;
+    margin: 0 0 20px 0;
+}
+.menu_content{
+    height:60px;
+}
+.menu {
+    width: 485px;
+    top: 60px;
+}
+.menu_warm {
+    float: left;
+    top: 38px;
+}
+.menu_warm2 {
+    float: left;
+    left: 0;
+    position: absolute;
+    top: 290px;
+}
+.menu_salad {
+    float: right;
+}
+#customer_area{
+    visibility:hidden;
+    height: 30px;
+    width: 400px;
+    resize: vertical;
+}
+.menuDateContainer{
+    position: relative;
+    width:970px;
+    height:280px;
+    clear:both;
+}
+.menuDateContainer h2{
+    clear:both;
+}
+
+.menu_wallboard {
+    width: 485px;
+    top: 60px;
+}
+.menu_wallboard > div, .menu1 > div, .menu2 > div {
+    background: url(../img/80-white_01.png) repeat;
+    padding: 10px;
+    margin: 0 0 5px 0;
+    height:70px;
+}
+
+.menu #titleBargain_1 p,
+.menu #titleBargain_2 p {
+    height: 40px;
+    margin: 0;
+}
+
+.menu > div, .menu1 > div, .menu2 > div {
+    background: url(../img/80-white_01.png) repeat;
+    padding: 15px;
+    margin: 0 0 20px 0;
+}
+
+.menu1 {
+    width: 485px;
+    float: left;
+    top: 60px;
+}
+
+.menu2 {
+    width: 485px;
+    float: right;
+    top: 60px;
+}
+
+a.title {
+    cursor: auto !important;
+    text-decoration: none !important;
+}
+
+.lbutton, .lbutton:visited,
+.lbutton-small, .lbutton-small:visited {
+    background: #af0015 url(../img/button_overlay.png) repeat-x;
+    display: inline-block;
+    padding: 8px 14px 6px;
+    color: #fff;
+    text-decoration: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    text-transform: none;
+}
+
+.lbutton-small, .lbutton-small:visited {
+    font-size: 12px;
+    padding: 2px 14px;
+}
+
+.lbutton:hover,
+.lbutton-small:hover {
+    background-color: #111 !important;
+    color: #fff;
+    text-decoration: none;
+}
+
+.lbutton:active,
+.lbutton-small:active {top: 1px;}
+
+.hint {
+    clear: both;
+    /*background: url('../../img/80-white_01.png') repeat;*/
+}
+
+.deadline {
+    color: #900;
+    font-weight: bold;
+}
+
+.priceValue {font-weight: bold;}
+
+#content {
+    background: url(../img/80-white_01.png) repeat;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 970px;
+}
+
+.storniertButton {
+    background: #af0015 url(../img/button_overlay.png) repeat-x;
+    background-color: #666 !important;
+    color: #d5d5d5;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 14px 6px;
+    text-decoration: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    position: relative;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    text-transform: none;
+}
+
+.basket_images{
+    width:150px;
+    height:150px;
+}
+
+a#forgotPasswordLink {color: #af0015;}
+a:hover#forgotPasswordLink {color: #af0015; text-decoration: underline;}

@@ -5,34 +5,36 @@
     <div id="basketInfo"></div>
 
     {foreach $themenu as $key=>$menu}
-        <div class="menuDateContainer">
-            <h2>Mittagessen für  {$menu.sWeekDate}, {$menu.sDate} </h2>
-            {foreach $menu.meals as $meal}
-                <div class="menu menu_warm">
-                    <div>
-                        <h3>
-                            {$meal.supplierName}
-                        </h3>
-                        <div class="menu_content">
-                            {$meal.description}
-                        </div>
-                        <div class="price " id="priceBargain_2">
-                            <div>
-                                <div class="menu_content">
-                                    <br><span class="priceValue">{$meal.price} € *</span><br>
+        {if $menu.meals|count>0}
+            <div class="menuDateContainer">
+                <h2>Mittagessen für  {$menu.sWeekDate}, {$menu.sDate} </h2>
+                {foreach $menu.meals as $meal}
+                    <div class="menu menu_warm">
+                        <div>
+                            <h3>
+                                {$meal.supplierName}
+                            </h3>
+                            <div class="menu_content">
+                                {$meal.description}
+                            </div>
+                            <div class="price " id="priceBargain_2">
+                                <div>
+                                    <div class="menu_content">
+                                        <br><span class="priceValue">{$meal.price} € *</span><br>
+                                    </div>
+                                    <div class="add_to_basket">
+                                        <input type="hidden" name="url" value="{url controller=checkout action=ajaxAddArticleCart}/sAdd/{$meal.ordernumber}/sQuantity/1" />
+                                        <button class="btnAddMeal lbutton" style="margin-top: 10px;">in den Warenkorb</button>
+                                    </div>
+                                    <!--<a href="{url controller=checkout action=ajaxAddArticleCart}/sAdd/{$meal.ordernumber}/sQuantity/1" class="btnAddMeal lbutton" style="margin-top: 10px;" title="in den Warenkorb">in den Warenkorb</a>-->
                                 </div>
-                                <div class="add_to_basket">
-                                    <input type="hidden" name="url" value="{url controller=checkout action=ajaxAddArticleCart}/sAdd/{$meal.ordernumber}/sQuantity/1" />
-                                    <button class="btnAddMeal lbutton" style="margin-top: 10px;">in den Warenkorb</button>
-                                </div>
-                                <!--<a href="{url controller=checkout action=ajaxAddArticleCart}/sAdd/{$meal.ordernumber}/sQuantity/1" class="btnAddMeal lbutton" style="margin-top: 10px;" title="in den Warenkorb">in den Warenkorb</a>-->
                             </div>
                         </div>
                     </div>
-                </div>
-            {/foreach}
+                {/foreach}
 
-        </div>
+            </div>
+        {/if}
     {/foreach}
 
 
@@ -56,20 +58,6 @@
                  });
              });
 
-             $('.menuDateContainer a.btnAddMeal').click(function(event){
-                  event.preventDefault();
-                  var url =  $(this).attr('href');
-                 $.ajax({
-                     url: url,
-                     cache: false,
-                     success: function(data){
-                         $("#basketFlyout").html(data);
-                         var temp = $('#sBasketQuantityFlyout').text();
-                         $('#countValue').text(temp);
-                     }
-                 });
-
-             });
         });
 
 

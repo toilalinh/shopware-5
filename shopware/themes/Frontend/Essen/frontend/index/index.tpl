@@ -33,82 +33,9 @@
 
     <div id="header">
 
-        <ul id="topMenu">
-            <li class="login flyout">
-
-
-
-
-                <div id="forgotPassword" class="popupBox corners FXgradGreyLight glowShadow">
-                    <img src="http://essen.laudert.de/out/essen/img/x.png" alt="" class="closePop">
-                    Sie haben Ihr Passwort vergessen?<br>
-                    Kein Problem, hier können Sie ein neues Passwort einrichten.<br><br>
-
-
-                    <form class="js-oxValidate" action="http://essen.laudert.de/index.php?" name="order" method="post">
-                        <input type="hidden" name="stoken" value="FFC878F8"><input type="hidden" name="force_sid" value="">
-                        <input type="hidden" name="lang" value="0">
-                        <input type="hidden" name="ldtype" value="infogrid">
-
-                        <input type="hidden" name="fnc" value="forgotpassword">
-                        <input type="hidden" name="cl" value="forgotpwd">
-                        <ul class="form clear">
-                            <li>
-                                <label>Ihre E-Mail-Adresse:</label>
-                                <input id="forgotPasswordUserLoginNamePopup" type="text" name="lgn_usr" value="" class="js-oxValidate js-oxValidate_notEmpty js-oxValidate_email">
-                                <p class="oxValidateError">
-                                    <span class="js-oxError_notEmpty">Bitte Wert angeben!</span>
-                                    <span class="js-oxError_email">Bitte geben Sie eine gültige E-Mail-Adresse ein</span>
-                                </p>
-                            </li>
-                            <li class="formSubmit">
-                                <button class="lbutton-small" type="submit" title="Passwort anfordern">Passwort anfordern</button>
-                            </li>
-                        </ul>
-                    </form>
-                    Nachdem Sie den 'Passwort anfordern'-Knopf angeklickt haben, schicken wir Ihnen eine E-Mail zu, mit der Sie Ihr Passwort ändern können.<br><br>
-                    Sollten Sie innerhalb der nächsten Minuten KEINE E-Mail mit Ihren Zugangsdaten erhalten, so überprüfen Sie bitte: Haben Sie sich in unserem Shop bereits registriert? Wenn nicht, so tun Sie dies bitte einmalig im Rahmen des Bestellprozesses. Sie können dann selbst ein Passwort festlegen. Sobald Sie registriert sind, können Sie sich in Zukunft mit Ihrer E-Mail-Adresse und Ihrem Passwort einloggen.
-                    <ul>
-                        <li class="font11">Wenn Sie sich sicher sind, dass Sie sich in unserem Shop bereits registriert haben, dann überprüfen Sie bitte, ob Sie sich bei der Eingabe Ihrer E-Mail-Adresse evtl. vertippt haben.</li></ul>
-                    <p>Sollten Sie trotz korrekter E-Mail-Adresse und bereits bestehender Registrierung weiterhin Probleme mit dem Login haben und auch keine "Passwort vergessen"-E-Mail erhalten, so wenden Sie sich bitte per E-Mail an: <a href="mailto:demo@oxid-esales.com?subject=Passwort"><strong>demo@oxid-esales.com</strong></a></p>    </div>
-                <a href="#" id="loginBoxOpener" title="Login">Login</a>
-                <form id="login" name="login" action="http://essen.laudert.de/index.php?" method="post">
-                    <div id="loginBox" class="loginBox"             <input type="hidden" name="stoken" value="FFC878F8"><input type="hidden" name="force_sid" value="">
-                    <input type="hidden" name="lang" value="0">
-                    <input type="hidden" name="ldtype" value="infogrid">
-
-                    <input type="hidden" name="fnc" value="login_noredirect">
-                    <input type="hidden" name="cl" value="start">
-                    <input type="hidden" name="pgNr" value="0">
-                    <input type="hidden" name="CustomError" value="loginBoxErrors">
-
-                    <div class="loginForm corners">
-                        <h4>Login</h4>
-                        <p>
-
-
-                            <label for="loginEmail" class="innerLabel">Login</label>
-                            <input id="loginEmail" type="text" name="lgn_usr" value="" class="textbox">
-                        </p>
-                        <p>
-
-
-                            <label for="loginPasword" class="innerLabel">Passwort</label>
-                            <input id="loginPasword" type="password" name="lgn_pwd" class="textbox passwordbox" value=""><strong><a id="forgotPasswordOpener" href="#" title="Passwort vergessen?">?</a></strong>
-                        </p>
-
-                        <p class="checkFields clear">
-                            <input type="checkbox" class="checkbox" value="1" name="lgn_cook" id="remember"><label for="remember">Passwort merken</label>
-                        </p>
-                        <p>
-                            <button type="submit" class="submitButton lbutton-small">Login</button>
-                        </p>
-                        <a id="forgotPasswordLink"  rel="nofollow" href="http://essen.laudert.de/passwort-vergessen/">Passwort vergessen ?</a>
-                    </div>
-    </div>
-    </form>
-    </li>
-    </ul>
+    {block name='frontend_index_essen_login'}
+        {include file="frontend/index/login.tpl"}
+    {/block}
 
     {block name='frontend_index_header_navigation'}
         {block name='frontend_index_shop_navigation'}
@@ -143,17 +70,23 @@
         </div>
 
         <div id="content">
-            {block name='frontend_index_content_meals'}
-                <div class="hint">
-                    {block name='frontend_index_content_hint'}
-                        <span class="deadline">Bestellung und Stornierungen bitte bis 09:30 Uhr des Liefertages</span><br />
-                        Sollte jemand Essen bestellt haben und krank werden, kann die Bestellung bis 09:30 Uhr im Benutzerkonto unter Bestellhistorie storniert werden. Andernfalls müssen wir das Essen ganz normal abrechnen.<br /><br />
-                        * Der Betrag wird am Ende des Monats von eurem Gehalt abgezogen!
+            <h1 id='foodmessage'></h1>
+            {block name='frontend_index_content_page'}
+                    {block name='frontend_index_content_meals'}
                     {/block}
-                </div>
+
+                    {block name='frontend_index_content_custom'}
+                    {/block}
+
+                    {block name='frontend_index_content_hint'}
+                            <div class="hint">
+                                <span class="deadline">Bestellung und Stornierungen bitte bis 09:30 Uhr des Liefertages</span><br />
+                                Sollte jemand Essen bestellt haben und krank werden, kann die Bestellung bis 09:30 Uhr im Benutzerkonto unter Bestellhistorie storniert werden. Andernfalls müssen wir das Essen ganz normal abrechnen.<br /><br />
+                                * Der Betrag wird am Ende des Monats von eurem Gehalt abgezogen!
+                            </div>
+                    {/block}
             {/block}
         </div>
-
     </div>
 
 
@@ -162,7 +95,7 @@
 
 {* Footer *}
 {block name="frontend_index_footer"}
-    <div id="footer"></div>
+    <div id="footer">{$temp}</div>
 {/block}
 
 

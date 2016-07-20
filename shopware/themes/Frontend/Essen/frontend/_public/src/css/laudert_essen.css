@@ -219,3 +219,10 @@ a.title {
 
 a#forgotPasswordLink {color: #af0015;}
 a:hover#forgotPasswordLink {color: #af0015; text-decoration: underline;}
+
+#personalsetting {
+    margin-top:-3px;
+    padding-left:5px;
+    padding-right:5px;
+    background-color: white;
+}

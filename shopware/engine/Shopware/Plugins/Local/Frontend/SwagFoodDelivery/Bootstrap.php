@@ -16,12 +16,50 @@ class Shopware_Plugins_Frontend_SwagFoodDelivery_Bootstrap extends Shopware_Comp
     {
         $this->subscribeEvent(
             'Enlight_Controller_Action_PostDispatchSecure_Frontend_Index',
+            'onIndexFrontendPostDispatch'
+        );
+
+        $this->registerController('frontend','personal');
+
+        $this->subscribeEvent(
+            'Enlight_Controller_Action_PostDispatchSecure_Frontend',
             'onFrontendPostDispatch'
         );
+
+       /* $this->subscribeEvent(
+            'Enlight_Controller_Action_PostDispatchSecure_Frontend_Test',
+            'onTestTest'
+        ); */
 
         //$this->createDatabase();
 
         return true;
+    }
+
+    public function onFrontendPostDispatch(Enlight_Event_EventArgs $args){
+
+        $controller = $args->get('subject');
+        $view = $controller->View();
+
+        $userMail = Shopware()->Session()->offsetGet('sUserMail');
+        $isLogged = false;
+        if(!empty($userMail)){
+            $isLogged = true;
+        }
+
+        $userData = array();
+        if($isLogged){
+            $userData = Shopware()->Session()->offsetGet('userData');
+        }
+
+        $firstname = count($userData)==0 ? '':$userData['additional']['user']['firstname'];
+        $lastname = count($userData)==0 ? '':$userData['additional']['user']['lastname'];
+
+        $view->assign('userData',$userData);
+        $view->assign('firstname',$firstname);
+        $view->assign('lastname',$lastname);
+        $view->assign('userMail',$userMail);
+        $view->assign('isLogged',$isLogged);
     }
 
     public function createDatabase(){
@@ -29,7 +67,8 @@ class Shopware_Plugins_Frontend_SwagFoodDelivery_Bootstrap extends Shopware_Comp
         Shopware()->Db()->query($sql);
     }
 
-    public function onFrontendPostDispatch(Enlight_Event_EventArgs $args)
+    //onFrontendPostDispatch
+    public function onIndexFrontendPostDispatch(Enlight_Event_EventArgs $args)
     {
         /** @var \Enlight_Controller_Action $controller */
         $controller = $args->get('subject');
@@ -143,7 +182,7 @@ class Shopware_Plugins_Frontend_SwagFoodDelivery_Bootstrap extends Shopware_Comp
         $GermanWeek = array('Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag');
         if($getMess == 0){
             foreach($articles as $item){
-                $sql =  $sql = "select expired_date from s_articles_details where ordernumber = ?";
+                $sql = "select expired_date from s_articles_details where ordernumber = ?";
                 $row = Shopware()->Db()->fetchRow($sql,array($item['ordernumber']));
                 $expired_date = $row['expired_date'];
                 $currentTime =  date('Y-m-d H:i', time());
